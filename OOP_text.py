@@ -39,7 +39,6 @@ class Text(object):
 		y = 0
 		idx = 0
 		numLines = height
-		#numLines = height - y
 		for idx in range(numLines):
 			if len(self.text)-1 <= idx:
 				break

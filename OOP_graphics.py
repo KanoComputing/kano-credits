@@ -42,25 +42,6 @@ class AsciiArt(object):
 	#		moveObjectToBottom()
 
 
-	"""def popOffTop(self, i):
-
-	    # if element is a set distance above starting point, and staffAsciiArt is not empty
-		if i == (self.startingHeight - self.numberOfLines) and staffAsciiArt:
-			makeStaffElementVisible()
-
-		# if element has disappeared off screen, is not in premiumAsciiArt and staffAsciiArt is empty
-		elif i == -self.numberOfLines and self.name == "boom":
-			switchToPremiumImages()
-
-		# if element has disappeared off screen and is in premiumAsciiArt
-		elif i == -self.numberOfLines and self in premiumAsciiArt:
-			moveObjectToBottom()
-
-		#if element is off the screen and none of the above
-		elif i == -self.numberOfLines:
-			visibleAsciiArt.pop(0)"""
-
-
 	def drawArt(self):
 		global width
 
@@ -70,10 +51,10 @@ class AsciiArt(object):
 		idx = 0
 		idx2 = self.numberOfLines
 
-		# self.popOffTop(y)
 		# if element is a set distance above starting point, and staffAsciiArt is not empty
 		if (y == (self.startingHeight - self.numberOfLines)) and staffAsciiArt:
 			makeStaffElementVisible()
+		# if element from premiumAsciiArt is a set distance from where it started and is in the premiumA
 		elif (y == (self.startingHeight - self.numberOfLines)) and self in premiumAsciiArt:
 			switchToPremiumImages()
 
@@ -89,8 +70,8 @@ class AsciiArt(object):
 		for idx in range(idx, idx2):
 			if y == -self.numberOfLines:
 				# so the element is back at the bottom of the page at the end of this function
-				self.currentHeight = self.startingHeight + 1
-				break
+				self.currentHeight = self.startingHeight
+				return
 			graphics.drawTile(x, tempy, self.art[idx], self.color)
 			tempy = tempy + 1
 
@@ -129,7 +110,7 @@ def init():
 
 	boom = AsciiArt("boom", 15, curses.color_pair(4))
 
-	staffAsciiArt = [hand, wizard, boom]
+	staffAsciiArt = [boom] #[hand, wizard, boom]
 	premiumAsciiArt = [handstand, somersault, backflip, handstand1, somersault1, backflip1, handstand2, somersault2, backflip2, handstand3, somersault3, backflip3]
 	visibleAsciiArt = [coffee]
 

@@ -87,6 +87,7 @@ def drawBorders():
         
 
 def update():
+
     changeText()
     OOP_text.currentText[0].drawText()
 
@@ -104,8 +105,7 @@ def popOffTop():
         OOP_graphics.switchToPremiumImages()
 
     # if element has disappeared off screen and is in premiumAsciiArt
-    elif i == -OOP_graphics.visibleAsciiArt[0].numberOfLines:
-        if (OOP_graphics.visibleAsciiArt[0].name == 'somersault' or OOP_graphics.visibleAsciiArt[0].name == 'backflip' or OOP_graphics.visibleAsciiArt[0].name == 'handstand'):
+    elif i == -OOP_graphics.visibleAsciiArt[0].numberOfLines and OOP_graphics.visibleAsciiArt[0] in OOP_graphics.premiumAsciiArt:
             OOP_graphics.moveObjectToBottom()
 
     # if element is off the screen and none of the above
@@ -113,7 +113,6 @@ def popOffTop():
         OOP_graphics.visibleAsciiArt.pop(0)
 
 def changeText():
-
     if not OOP_text.currentText[0].text:
         OOP_text.changeVisibleText()
 
