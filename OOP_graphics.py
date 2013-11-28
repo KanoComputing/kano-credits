@@ -110,7 +110,7 @@ def init():
 
 	boom = AsciiArt("boom", 15, curses.color_pair(4))
 
-	staffAsciiArt = [boom] #[hand, wizard, boom]
+	staffAsciiArt = [hand, wizard, boom]
 	premiumAsciiArt = [handstand, somersault, backflip, handstand1, somersault1, backflip1, handstand2, somersault2, backflip2, handstand3, somersault3, backflip3]
 	visibleAsciiArt = [coffee]
 

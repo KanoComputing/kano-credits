@@ -69,21 +69,6 @@ def drawBorders():
     drawTile(x_left - 1, y_bottom, '  ', color)
     drawTile(x_right, y_top - 1, '  ', color)
     drawTile(x_right, y_bottom, '  ', color)
-
-
-"""def drawText():
-    global height, width
-    color = curses.color_pair(2)
-
-    x = 60
-    y = 3 # Where the box is placed vertically
-    idx = 0
-    numLines = 36
-    for idx in range(numLines):
-        if len(loop.text)-1 <= idx:
-            break
-        drawTile(x, y, loop.text[idx], color)
-        y = y + 1"""
         
 
 def update():
@@ -91,11 +76,12 @@ def update():
     changeText()
     OOP_text.currentText[0].drawText()
 
-    # Go through visibleAsciiArt array, and draw seleted asci art on the page
     popOffTop()
 
+    # Go through visibleAsciiArt array, and draw seleted asci art on the page
     for i in range(len(OOP_graphics.visibleAsciiArt)):
         OOP_graphics.visibleAsciiArt[i].drawArt()
+
 
 def popOffTop():
     i = OOP_graphics.visibleAsciiArt[0].currentHeight
@@ -104,13 +90,17 @@ def popOffTop():
     if i == -OOP_graphics.visibleAsciiArt[0].numberOfLines and OOP_graphics.visibleAsciiArt[0].name == "boom":
         OOP_graphics.switchToPremiumImages()
 
+
     # if element has disappeared off screen and is in premiumAsciiArt
+    # When this elif is split into an elif and an (apparently identical) condition (where we chack the name of
+    # the objects to see if they belong to array)
     elif i == -OOP_graphics.visibleAsciiArt[0].numberOfLines and OOP_graphics.visibleAsciiArt[0] in OOP_graphics.premiumAsciiArt:
             OOP_graphics.moveObjectToBottom()
 
     # if element is off the screen and none of the above
     elif i == -OOP_graphics.visibleAsciiArt[0].numberOfLines:
         OOP_graphics.visibleAsciiArt.pop(0)
+
 
 def changeText():
     if not OOP_text.currentText[0].text:
