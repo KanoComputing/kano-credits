@@ -3,12 +3,13 @@ import curses
 import console
 import math
 import loop
+import OOP_graphics
+import OOP_text
 
 screen = None
 #padding = (padding_y, padding_x, padding_y, padding_x)
 width = 0
 height = 0
-
 
 def drawTile(x, y, tile='', color=None):
     global screen
@@ -26,7 +27,7 @@ def drawBackground():
 
     print width
     print height
-    #max_y = int(math.floor(height) / 2)
+    # max_y = int(math.floor(height) / 2)
     max_x = int(math.floor(width) / 2)
     color = curses.color_pair(2)
 
@@ -36,8 +37,8 @@ def drawBackground():
         for x in range(0, max_x):
             drawTile(x, y, ' ', curses.COLOR_BLUE)
     
-    drawHeader()
-    drawBorders()
+    #drawHeader()
+    #drawBorders()
 
 
 def drawHeader():
@@ -45,7 +46,7 @@ def drawHeader():
     color = curses.color_pair(1)
 
     drawTile(10, 0, "Width: %d, Height: %d" % (width, height), color)
-    #drawTile(10, 0, ' C R E D I T S', curses.COLOR_GREEN)
+    # drawTile(10, 0, ' C R E D I T S', curses.COLOR_GREEN)
  
 
 def drawBorders():
@@ -70,23 +71,51 @@ def drawBorders():
     drawTile(x_right, y_bottom, '  ', color)
 
 
-def drawText():
+"""def drawText():
     global height, width
     color = curses.color_pair(2)
 
-    x = 20
-    y = 3
+    x = 60
+    y = 3 # Where the box is placed vertically
     idx = 0
     numLines = 36
     for idx in range(numLines):
         if len(loop.text)-1 <= idx:
             break
         drawTile(x, y, loop.text[idx], color)
-        y = y + 1
+        y = y + 1"""
         
 
 def update():
-    drawText()
+    changeText()
+    OOP_text.currentText[0].drawText()
+
+    # Go through visibleAsciiArt array, and draw seleted asci art on the page
+    popOffTop()
+
+    for i in range(len(OOP_graphics.visibleAsciiArt)):
+        OOP_graphics.visibleAsciiArt[i].drawArt()
+
+def popOffTop():
+    i = OOP_graphics.visibleAsciiArt[0].currentHeight
+
+    # if element has disappeared off screen, and is last element in staffAsciiArt
+    if i == -OOP_graphics.visibleAsciiArt[0].numberOfLines and OOP_graphics.visibleAsciiArt[0].name == "boom":
+        OOP_graphics.switchToPremiumImages()
+
+    # if element has disappeared off screen and is in premiumAsciiArt
+    elif i == -OOP_graphics.visibleAsciiArt[0].numberOfLines:
+        if (OOP_graphics.visibleAsciiArt[0].name == 'somersault' or OOP_graphics.visibleAsciiArt[0].name == 'backflip' or OOP_graphics.visibleAsciiArt[0].name == 'handstand'):
+            OOP_graphics.moveObjectToBottom()
+
+    # if element is off the screen and none of the above
+    elif i == -OOP_graphics.visibleAsciiArt[0].numberOfLines:
+        OOP_graphics.visibleAsciiArt.pop(0)
+
+def changeText():
+
+    if not OOP_text.currentText[0].text:
+        OOP_text.changeVisibleText()
 
 
 def init():
@@ -105,6 +134,14 @@ def init():
     # (font, background)
     curses.init_pair(1, curses.COLOR_RED, curses.COLOR_WHITE)
     curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
+    curses.init_pair(3, curses.COLOR_BLUE, curses.COLOR_BLACK)
+    curses.init_pair(4, curses.COLOR_RED, curses.COLOR_BLACK)
+    curses.init_pair(5, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
+    curses.init_pair(6, curses.COLOR_YELLOW, curses.COLOR_BLACK)
+    curses.init_pair(7, curses.COLOR_CYAN, curses.COLOR_BLACK)
+    curses.init_pair(8, curses.COLOR_WHITE, curses.COLOR_BLACK)
+
+    OOP_graphics.init()
 
 
 def exit():

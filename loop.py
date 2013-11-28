@@ -2,29 +2,38 @@
 import time
 import controls
 import graphics
+import OOP_graphics
+import OOP_text
 
 frame_len = .3
 last_update = None
-text = []
+
 maxSize = 22
+move_y = 0
 
 
 def init():
-    global text
 
     graphics.init()
     graphics.drawBackground()
-    with open("credits") as f:
-        text = f.readlines()
-    #for i in range(len(text)):
-        #text[i] = text[i].rstrip()
+
+    OOP_text.init()
+
     
-
 def update():
-    global text
+    global move_y
 
-    if len(text) > 0:
-        text.pop(0)
+    if len(OOP_text.currentText[0].text) > 0:
+        OOP_text.currentText[0].text.pop(0)
+
+    # Go through array of visible ascii art
+    # For each object, move the top line of the art to the bottom
+
+    for i in range(len(OOP_graphics.visibleAsciiArt)):
+        for x in range(OOP_graphics.visibleAsciiArt[i].numberOfLines):
+            OOP_graphics.visibleAsciiArt[i].art.append(OOP_graphics.visibleAsciiArt[i].art[0])
+            OOP_graphics.visibleAsciiArt[i].art.pop(0)
+        
     graphics.update()
 
 
