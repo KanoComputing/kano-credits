@@ -11,6 +11,7 @@ screen = None
 width = 0
 height = 0
 
+
 def drawTile(x, y, tile='', color=None):
     global screen
 
@@ -87,7 +88,7 @@ def popOffTop():
     i = OOP_graphics.visibleAsciiArt[0].currentHeight
 
     # if element has disappeared off screen, and is last element in staffAsciiArt
-    if i == -OOP_graphics.visibleAsciiArt[0].numberOfLines and OOP_graphics.visibleAsciiArt[0].name == "boom":
+    if i == -OOP_graphics.visibleAsciiArt[0].numberOfLines and OOP_graphics.visibleAsciiArt[0].name == "shoes":
         OOP_graphics.switchToPremiumImages()
 
 
@@ -105,6 +106,8 @@ def popOffTop():
 def changeText():
     if not OOP_text.currentText[0].text:
         OOP_text.changeVisibleText()
+        #if OOP_text.currentText[0].name == "premiumDonators":
+            # Add function here for removing images.  Maybe resize text box/change coordinates.
 
 
 def init():

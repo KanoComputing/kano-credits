@@ -45,7 +45,7 @@ class AsciiArt(object):
 	def drawArt(self):
 		global width
 
-		x = width/5
+		x = width/6
 		y = self.currentHeight
 		tempy = self.currentHeight
 		idx = 0
@@ -78,7 +78,7 @@ class AsciiArt(object):
 		self.currentHeight = self.currentHeight - 1
 
 
-###########################################################
+#####################################################################################
 
 
 def init():
@@ -86,7 +86,7 @@ def init():
 	global premiumAsciiArt
 	global staffAsciiArt
 
-	wizard = AsciiArt("wizard", 15, curses.color_pair(2))
+	wizard = AsciiArt("staff-images/wizard", 15, curses.color_pair(2))
 
 	backflip = AsciiArt("backflip", 4, curses.color_pair(3))
 	backflip1 = AsciiArt("backflip", 4, curses.color_pair(3))
@@ -103,14 +103,20 @@ def init():
 	somersault2 = AsciiArt("somersault", 4, curses.color_pair(8))
 	somersault3 = AsciiArt("somersault", 4, curses.color_pair(8))
 
-	coffee = AsciiArt("coffee", 15, curses.color_pair(5))
+	coffee = AsciiArt("staff-images/coffee", 15, curses.color_pair(5))
 	coffee.currentHeight = coffee.currentHeight - coffee.numberOfLines
 
-	hand = AsciiArt("hand", 15, curses.color_pair(6))
+	hand = AsciiArt("staff-images/hand", 15, curses.color_pair(6))
 
-	boom = AsciiArt("boom", 15, curses.color_pair(4))
+	boom = AsciiArt("staff-images/boom", 15, curses.color_pair(4))
 
-	staffAsciiArt = [hand, wizard, boom]
+	peter = AsciiArt("staff-images/peter-pan", 26, curses.color_pair(2))
+
+	shoes = AsciiArt("staff-images/shoes", 10, curses.color_pair(8))
+
+	monkey = AsciiArt("staff-images/monkey", 21, curses.color_pair(8))
+
+	staffAsciiArt = [hand, wizard, boom, peter, shoes, monkey]
 	premiumAsciiArt = [handstand, somersault, backflip, handstand1, somersault1, backflip1, handstand2, somersault2, backflip2, handstand3, somersault3, backflip3]
 	visibleAsciiArt = [coffee]
 
@@ -138,6 +144,7 @@ def moveObjectToBottom():
 	visibleAsciiArt[0].currentHeight = visibleAsciiArt[0].startingHeight
 	visibleAsciiArt.append(visibleAsciiArt[0])
 	visibleAsciiArt.pop(0)
+	print visibleAsciiArt
 
 def removeTopElement():
 	global visibleAsciiArt

@@ -34,7 +34,7 @@ class Text(object):
 
 		color = curses.color_pair(8)
 
-		x = (2*width)/3
+		x = (2*width)/4
 		# y = self.startingHeight # Where the box is placed vertically
 		y = 0
 		idx = 0
