@@ -120,8 +120,8 @@ def init():
 
 	monkey = AsciiArt("staff-images/monkey", 21, curses.color_pair(6))
 
-	#staffAsciiArt = [hand, wizard, boom, peter, shoes, monkey]
-	premiumAsciiArt = [handstand, somersault, backflip, handstand1, somersault1, backflip1]#, handstand2, somersault2, backflip2, handstand3, somersault3, backflip3]
+	staffAsciiArt = [hand, wizard, boom, peter, shoes, monkey]
+	premiumAsciiArt = [handstand, somersault, backflip, handstand1, somersault1, backflip1, handstand2, somersault2, backflip2, handstand3, somersault3, backflip3]
 	visibleAsciiArt = [coffee]
 
 
