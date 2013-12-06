@@ -38,7 +38,7 @@ def drawBackground():
         for x in range(0, max_x):
             drawTile(x, y, ' ', curses.COLOR_BLUE)
     
-    #drawHeader()
+    drawHeader()
     #drawBorders()
 
 
@@ -47,7 +47,7 @@ def drawHeader():
     color = curses.color_pair(1)
 
     drawTile(10, 0, "Width: %d, Height: %d" % (width, height), color)
-    # drawTile(10, 0, ' C R E D I T S', curses.COLOR_GREEN)
+    #drawTile(10, 0, 'c r e d i t s', curses.COLOR_GREEN)
  
 
 def drawBorders():
@@ -88,19 +88,33 @@ def popOffTop():
     i = OOP_graphics.visibleAsciiArt[0].currentHeight
 
     # if element has disappeared off screen, and is last element in staffAsciiArt
-    if i == -OOP_graphics.visibleAsciiArt[0].numberOfLines and OOP_graphics.visibleAsciiArt[0].name == "shoes":
+    if i == -OOP_graphics.visibleAsciiArt[0].numberOfLines and len(OOP_graphics.visibleAsciiArt) == 1:
         OOP_graphics.switchToPremiumImages()
+        f = open('consolelog', 'a')
+        f.write(str(len(OOP_graphics.visibleAsciiArt)) + '\n')
+        f.write('OOP_graphics.switchToPremiumImages() carried out\n\n')
+        f.close()
 
 
     # if element has disappeared off screen and is in premiumAsciiArt
     # When this elif is split into an elif and an (apparently identical) condition (where we chack the name of
     # the objects to see if they belong to array)
-    elif i == -OOP_graphics.visibleAsciiArt[0].numberOfLines and OOP_graphics.visibleAsciiArt[0] in OOP_graphics.premiumAsciiArt:
-            OOP_graphics.moveObjectToBottom()
+    #elif i <= (-OOP_graphics.visibleAsciiArt[0].numberOfLines) and OOP_graphics.visibleAsciiArt[0] in OOP_graphics.premiumAsciiArt:
+        #OOP_graphics.switchToPremiumImages()
+      #  f = open('consolelog', 'a')
+       # f.write('OOP_graphics.moveObjectToBottom() carried out\n\n')
+        #f.close()
+
 
     # if element is off the screen and none of the above
-    elif i == -OOP_graphics.visibleAsciiArt[0].numberOfLines:
+    elif i <= -OOP_graphics.visibleAsciiArt[0].numberOfLines:
+        f = open('consolelog', 'a')
+        f.write('before visibleAsciiArt.pop(0) carried out\n')
+        f.write('visibleAsciiArt ' + str(OOP_graphics.visibleAsciiArt) + '\n\n')
         OOP_graphics.visibleAsciiArt.pop(0)
+        f.write('after visibleAsciiArt.pop(0) carried out\n')
+        f.write('visibleAsciiArt ' + str(OOP_graphics.visibleAsciiArt) + '\n\n')
+        f.close()
 
 
 def changeText():

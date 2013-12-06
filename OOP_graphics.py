@@ -11,6 +11,7 @@ premiumAsciiArt = []
 #allAsciiArt = []
 height = 0
 width = 0
+printMessageToScreen = ''
 
 class AsciiArt(object):
 
@@ -71,6 +72,9 @@ class AsciiArt(object):
 			if y == -self.numberOfLines:
 				# so the element is back at the bottom of the page at the end of this function
 				self.currentHeight = self.startingHeight
+				f = open('consolelog', 'a')
+				f.write('self.currentHeight = self.startingHeight has been carried out\n\n')
+ 				f.close()
 				return
 			graphics.drawTile(x, tempy, self.art[idx], self.color)
 			tempy = tempy + 1
@@ -114,10 +118,10 @@ def init():
 
 	shoes = AsciiArt("staff-images/shoes", 10, curses.color_pair(8))
 
-	monkey = AsciiArt("staff-images/monkey", 21, curses.color_pair(8))
+	monkey = AsciiArt("staff-images/monkey", 21, curses.color_pair(6))
 
-	staffAsciiArt = [hand, wizard, boom, peter, shoes, monkey]
-	premiumAsciiArt = [handstand, somersault, backflip, handstand1, somersault1, backflip1, handstand2, somersault2, backflip2, handstand3, somersault3, backflip3]
+	#staffAsciiArt = [hand, wizard, boom, peter, shoes, monkey]
+	premiumAsciiArt = [handstand, somersault, backflip, handstand1, somersault1, backflip1]#, handstand2, somersault2, backflip2, handstand3, somersault3, backflip3]
 	visibleAsciiArt = [coffee]
 
 
@@ -128,25 +132,43 @@ def makeStaffElementVisible():
 	visibleAsciiArt.append(staffAsciiArt[0])
 	staffAsciiArt.pop(0)
 
+	f = open('consolelog', 'a')
+	f.write('staffAsciiArt.pop(0) has been carried out\n')
+	f.write('staffAsciiArt: ' + str(staffAsciiArt) + '\n\n')
+ 	f.close()
 
-def switchToPremiumImages():
+
+def switchToPremiumImages():  # TODO: need to turn this off if filled with icons already 
 	global visibleAsciiArt
 	global premiumAsciiArt
+	global printMessageToScreen
 
+	f = open('consolelog', 'a')
+
+	premiumAsciiArt[0].currentHeight = premiumAsciiArt[0].startingHeight
 	visibleAsciiArt.append(premiumAsciiArt[0])
 	premiumAsciiArt.append(premiumAsciiArt[0])
 	premiumAsciiArt.pop(0)
+
+	f.write('Item added to visibleAsciiArt\n')
+	f.write('visibleAsciiArt: ' + str(visibleAsciiArt) + '\n\n')
+
+ 	f.close()
 
 # Sticks the object at the top of the array onto the bottom
 def moveObjectToBottom():
 	global visibleAsciiArt
 
+	f = open('consolelog', 'a')
+
 	visibleAsciiArt[0].currentHeight = visibleAsciiArt[0].startingHeight
 	visibleAsciiArt.append(visibleAsciiArt[0])
-	visibleAsciiArt.pop(0)
-	print visibleAsciiArt
+	visibleAsciiArt.remove(visibleAsciiArt[0])
+
+	f.write('In moveObjectToBottom\n')
+	f.write('visibleAsciiArt ' + str(visibleAsciiArt) + '\n\n')
+	f.close()
 
 def removeTopElement():
 	global visibleAsciiArt
-
 	visibleAsciiArt.pop(0)

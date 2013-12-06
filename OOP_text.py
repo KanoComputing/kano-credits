@@ -59,7 +59,8 @@ def init():
 	scum = Text("scum")
 
 	allText= [premiumDonators, scum]
-	currentText = [staff]
+	#currentText = [staff]
+	currentText = [scum]
 
 
 def changeVisibleText():
