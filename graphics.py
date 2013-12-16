@@ -3,8 +3,9 @@ import curses
 import console
 import math
 import loop
-import OOP_graphics
-import OOP_text
+import ascii
+import text
+import sys
 
 screen = None
 #padding = (padding_y, padding_x, padding_y, padding_x)
@@ -75,52 +76,54 @@ def drawBorders():
 def update():
 
     changeText()
-    OOP_text.currentText[0].drawText()
+    text.currentText[0].drawText()
 
     popOffTop()
 
     # Go through visibleAsciiArt array, and draw seleted asci art on the page
-    for i in range(len(OOP_graphics.visibleAsciiArt)):
-        OOP_graphics.visibleAsciiArt[i].drawArt()
+    for i in range(len(ascii.visibleAsciiArt)):
+        ascii.visibleAsciiArt[i].drawArt()
 
 
 def popOffTop():
-    i = OOP_graphics.visibleAsciiArt[0].currentHeight
+    f = open('consolelog', 'a')
+    f.write('len(ascii.visibleAsciiArt) = ' + str(len(ascii.visibleAsciiArt)) +'\n')
+    f.close()
 
-    # if element has disappeared off screen, and is last element in staffAsciiArt
-    if i == -OOP_graphics.visibleAsciiArt[0].numberOfLines and len(OOP_graphics.visibleAsciiArt) == 1:
-        OOP_graphics.switchToPremiumImages()
-        f = open('consolelog', 'a')
-        f.write(str(len(OOP_graphics.visibleAsciiArt)) + '\n')
-        f.write('OOP_graphics.switchToPremiumImages() carried out\n\n')
-        f.close()
+    if len(ascii.visibleAsciiArt) != 0:
+        i = ascii.visibleAsciiArt[0].currentHeight
 
+        # if element has disappeared off screen, and is last element in staffAsciiArt
+        """if i == -ascii.visibleAsciiArt[0].numberOfLines and len(ascii.visibleAsciiArt) == 1:
+            ascii.switchToPremiumImages()
+            f = open('consolelog', 'a')
+            f.write(str(len(ascii.visibleAsciiArt)) + '\n')
+            f.write('ascii.switchToPremiumImages() carried out\n\n')
+            f.close()"""
 
     # if element has disappeared off screen and is in premiumAsciiArt
     # When this elif is split into an elif and an (apparently identical) condition (where we chack the name of
     # the objects to see if they belong to array)
-    #elif i <= (-OOP_graphics.visibleAsciiArt[0].numberOfLines) and OOP_graphics.visibleAsciiArt[0] in OOP_graphics.premiumAsciiArt:
-        #OOP_graphics.switchToPremiumImages()
+    #elif i <= (-ascii.visibleAsciiArt[0].numberOfLines) and ascii.visibleAsciiArt[0] in ascii.premiumAsciiArt:
+        #ascii.switchToPremiumImages()
       #  f = open('consolelog', 'a')
-       # f.write('OOP_graphics.moveObjectToBottom() carried out\n\n')
+       # f.write('ascii.moveObjectToBottom() carried out\n\n')
         #f.close()
 
+    # if element is off the screen and none of the above.
+    if i <= -ascii.visibleAsciiArt[0].numberOfLines:
+        ascii.visibleAsciiArt.pop(0)
 
-    # if element is off the screen and none of the above
-    elif i <= -OOP_graphics.visibleAsciiArt[0].numberOfLines:
-        f = open('consolelog', 'a')
-        f.write('before visibleAsciiArt.pop(0) carried out\n')
-        f.write('visibleAsciiArt ' + str(OOP_graphics.visibleAsciiArt) + '\n\n')
-        OOP_graphics.visibleAsciiArt.pop(0)
-        f.write('after visibleAsciiArt.pop(0) carried out\n')
-        f.write('visibleAsciiArt ' + str(OOP_graphics.visibleAsciiArt) + '\n\n')
-        f.close()
+    if len(ascii.visibleAsciiArt) == 0:
+        #process = subprocess.Popen(["killall", "python"])
+        sys.exit(0)
 
 
 def changeText():
-    if not OOP_text.currentText[0].text:
-        OOP_text.changeVisibleText()
-        #if OOP_text.currentText[0].name == "premiumDonators":
+
+    if not text.currentText[0].text:
+        text.changeVisibleText()
+        #if text.currentText[0].name == "premiumDonators":
             # Add function here for removing images.  Maybe resize text box/change coordinates.
 
 
@@ -147,7 +150,7 @@ def init():
     curses.init_pair(7, curses.COLOR_CYAN, curses.COLOR_BLACK)
     curses.init_pair(8, curses.COLOR_WHITE, curses.COLOR_BLACK)
 
-    OOP_graphics.init()
+    ascii.init()
 
 
 def exit():
