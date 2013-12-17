@@ -74,9 +74,6 @@ class AsciiArt(object):
 			if y == -self.numberOfLines:
 				# so the element is back at the bottom of the page at the end of this function
 				self.currentHeight = self.startingHeight
-				f = open('consolelog', 'a')
-				f.write('self.currentHeight = self.startingHeight has been carried out\n\n')
- 				f.close()
 				return
 			graphics.drawTile(x, tempy, self.art[idx], self.color)
 			tempy = tempy + 1
@@ -93,45 +90,24 @@ def init():
 	global staffAsciiArt
 	global allAsciiArt
 
-	wizard = AsciiArt("staff-images/wizard2", 18, curses.color_pair(2))
-
-	"""backflip = AsciiArt("backflip", 4, curses.color_pair(3))
-	backflip1 = AsciiArt("backflip", 4, curses.color_pair(3))
-	backflip2 = AsciiArt("backflip", 4, curses.color_pair(3))
-	backflip3 = AsciiArt("backflip", 4, curses.color_pair(3))
-
-	handstand = AsciiArt("handstand", 4, curses.color_pair(7))
-	handstand1 = AsciiArt("handstand", 4, curses.color_pair(7))
-	handstand2 = AsciiArt("handstand", 4, curses.color_pair(7))
-	handstand3 = AsciiArt("handstand", 4, curses.color_pair(7))
-
-	somersault = AsciiArt("somersault", 4, curses.color_pair(8))
-	somersault1 = AsciiArt("somersault", 4, curses.color_pair(8))
-	somersault2 = AsciiArt("somersault", 4, curses.color_pair(8))
-	somersault3 = AsciiArt("somersault", 4, curses.color_pair(8)) """
-
-	coffee = AsciiArt("staff-images/coffee", 16, curses.color_pair(5))
-
+	wizard = AsciiArt("staff-images/wizard", 18, curses.color_pair(2))
+	coffee = AsciiArt("staff-images/coffee", 18, curses.color_pair(5))
 	hand = AsciiArt("staff-images/hand", 15, curses.color_pair(6))
-
 	boom = AsciiArt("staff-images/boom", 15, curses.color_pair(4))
-
 	peter = AsciiArt("staff-images/peter-pan", 26, curses.color_pair(2))
-
-	shoes = AsciiArt("staff-images/shoes", 15, curses.color_pair(8))
-
+	shoes = AsciiArt("staff-images/shoes", 18, curses.color_pair(8))
 	monkey = AsciiArt("staff-images/monkey", 21, curses.color_pair(6))
+	smileyFace = AsciiArt("staff-images/smiley-face", 15, curses.color_pair(6))
+	brainy = AsciiArt("staff-images/brainy-guy", 17, curses.color_pair(5))
+	book = AsciiArt("staff-images/book", 18, curses.color_pair(3))
+	camera = AsciiArt("staff-images/camera", 14, curses.color_pair(8))
+	bowl = AsciiArt("staff-images/bowl", 18, curses.color_pair(7))
+	hair = AsciiArt("staff-images/hair", 13, curses.color_pair(6))
+	blank = AsciiArt("staff-images/blank", 1, curses.color_pair(6))
 
-	smileyFace = AsciiArt("staff-images/smiley-face", 11, curses.color_pair(6))
-
-	brainy = AsciiArt("staff-images/brainy-guy", 21, curses.color_pair(6))
-
-	book = AsciiArt("staff-images/book", 14, curses.color_pair(6))
-
-	allAsciiArt = [hand, book, brainy, smileyFace, coffee, wizard, boom, peter, shoes, monkey]
-	staffAsciiArt = [book, brainy, smileyFace, coffee, wizard, boom, peter, shoes, monkey]
-	#premiumAsciiArt = [handstand, somersault, backflip, handstand1, somersault1, backflip1, handstand2, somersault2, backflip2, handstand3, somersault3, backflip3]
-	visibleAsciiArt = [hand]
+	allAsciiArt = [brainy, hand, book, hair, monkey, bowl, camera, wizard, shoes, coffee, boom, smileyFace, peter, blank]
+	staffAsciiArt = [hand, book, hair, monkey, bowl, camera,  wizard, shoes, coffee, boom, smileyFace, peter, blank]
+	visibleAsciiArt = [brainy]
 
 	visibleAsciiArt[0].currentHeight = visibleAsciiArt[0].currentHeight - visibleAsciiArt[0].numberOfLines
 
@@ -143,18 +119,11 @@ def makeStaffElementVisible():
 	visibleAsciiArt.append(staffAsciiArt[0])
 	staffAsciiArt.pop(0)
 
-	f = open('consolelog', 'a')
-	f.write('staffAsciiArt.pop(0) has been carried out\n')
-	f.write('staffAsciiArt: ' + str(staffAsciiArt) + '\n\n')
- 	f.close()
-
 
 def switchToPremiumImages():  # TODO: need to turn this off if filled with icons already 
 	global visibleAsciiArt
 	global premiumAsciiArt
 	global printMessageToScreen
-
-	f = open('consolelog', 'a')
 
 	if len(premiumAsciiArt) != 0:
 		premiumAsciiArt[0].currentHeight = premiumAsciiArt[0].startingHeight
@@ -162,24 +131,13 @@ def switchToPremiumImages():  # TODO: need to turn this off if filled with icons
 		premiumAsciiArt.append(premiumAsciiArt[0])
 		premiumAsciiArt.pop(0)
 
-		f.write('Item added to visibleAsciiArt\n')
-		f.write('visibleAsciiArt: ' + str(visibleAsciiArt) + '\n\n')
-
-	 	f.close()
-
 # Sticks the object at the top of the array onto the bottom
 def moveObjectToBottom():
 	global visibleAsciiArt
-
-	f = open('consolelog', 'a')
-
 	visibleAsciiArt[0].currentHeight = visibleAsciiArt[0].startingHeight
 	visibleAsciiArt.append(visibleAsciiArt[0])
 	visibleAsciiArt.remove(visibleAsciiArt[0])
 
-	f.write('In moveObjectToBottom\n')
-	f.write('visibleAsciiArt ' + str(visibleAsciiArt) + '\n\n')
-	f.close()
 
 def removeTopElement():
 	global visibleAsciiArt

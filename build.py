@@ -24,7 +24,7 @@ class Build(object):
 		h = open('actualText', 'a')
 
 		for k in range(height - 18):
-			h.write(' '.ljust(49) + '\n')
+			h.write(' '.ljust(50) + '\n')
 
 		with open(self.textFilenames) as f:
 			self.text = f.readlines()
@@ -34,7 +34,7 @@ class Build(object):
 			try:
 				numberOfLines = ascii.allAsciiArt[i].numberOfLines
 				for j in range(numberOfLines - 1):
-					h.write(' '.ljust(49) + '\n')
+					h.write(' '.ljust(50) + '\n')
 				text = re.sub(';', '\n', self.text[i])
 				h = open('actualText', 'a')
 				h.write(text)
@@ -46,7 +46,6 @@ class Build(object):
 
 
 # ----------------------------------------------------------------------------
-"""
+
 graphics.init()
-ascii.init()
-Build('staff2') """
+Build('staff')

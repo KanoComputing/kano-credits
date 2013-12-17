@@ -1,6 +1,7 @@
 
 import graphics
 import loop
+import os
 
 
 def exit():

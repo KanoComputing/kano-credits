@@ -2,8 +2,8 @@
 import time
 import controls
 import graphics
-import OOP_graphics
-import OOP_text
+import ascii
+import text
 
 frame_len = .3
 last_update = None
@@ -16,23 +16,22 @@ def init():
 
     graphics.init()
     graphics.drawBackground()
-
-    OOP_text.init()
+    text.init()
 
     
 def update():
     global move_y
 
-    if len(OOP_text.currentText[0].text) > 0:
-        OOP_text.currentText[0].text.pop(0)
+    if len(text.currentText[0].text) > 0:
+        text.currentText[0].text.pop(0)
 
     # Go through array of visible ascii art
     # For each object, move the top line of the art to the bottom
 
-    for i in range(len(OOP_graphics.visibleAsciiArt)):
-        for x in range(OOP_graphics.visibleAsciiArt[i].numberOfLines):
-            OOP_graphics.visibleAsciiArt[i].art.append(OOP_graphics.visibleAsciiArt[i].art[0])
-            OOP_graphics.visibleAsciiArt[i].art.pop(0)
+    for i in range(len(ascii.visibleAsciiArt)):
+        for x in range(ascii.visibleAsciiArt[i].numberOfLines):
+            ascii.visibleAsciiArt[i].art.append(ascii.visibleAsciiArt[i].art[0])
+            ascii.visibleAsciiArt[i].art.pop(0)
         
     graphics.update()
 

@@ -18,10 +18,13 @@ def drawTile(x, y, tile='', color=None):
 
     #x = x * 2 + stage.padding[3] * 2 + stage.width / 2
     #y += stage.padding[0] + stage.height / 2
+    try :
+        screen.addstr(y, x, tile, color)
+        if (len(tile) < 2):
+            screen.addstr(y, x + 1, tile, color)
 
-    screen.addstr(y, x, tile, color)
-    if (len(tile) < 2):
-        screen.addstr(y, x + 1, tile, color)
+    except:
+        print 'error'
 
 
 def drawBackground():
@@ -39,11 +42,12 @@ def drawBackground():
         for x in range(0, max_x):
             drawTile(x, y, ' ', curses.COLOR_BLUE)
     
-    drawHeader()
+    #drawHeader()
     #drawBorders()
 
 
 def drawHeader():
+
     global height, width
     color = curses.color_pair(1)
 
@@ -86,36 +90,14 @@ def update():
 
 
 def popOffTop():
-    f = open('consolelog', 'a')
-    f.write('len(ascii.visibleAsciiArt) = ' + str(len(ascii.visibleAsciiArt)) +'\n')
-    f.close()
-
     if len(ascii.visibleAsciiArt) != 0:
         i = ascii.visibleAsciiArt[0].currentHeight
-
-        # if element has disappeared off screen, and is last element in staffAsciiArt
-        """if i == -ascii.visibleAsciiArt[0].numberOfLines and len(ascii.visibleAsciiArt) == 1:
-            ascii.switchToPremiumImages()
-            f = open('consolelog', 'a')
-            f.write(str(len(ascii.visibleAsciiArt)) + '\n')
-            f.write('ascii.switchToPremiumImages() carried out\n\n')
-            f.close()"""
-
-    # if element has disappeared off screen and is in premiumAsciiArt
-    # When this elif is split into an elif and an (apparently identical) condition (where we chack the name of
-    # the objects to see if they belong to array)
-    #elif i <= (-ascii.visibleAsciiArt[0].numberOfLines) and ascii.visibleAsciiArt[0] in ascii.premiumAsciiArt:
-        #ascii.switchToPremiumImages()
-      #  f = open('consolelog', 'a')
-       # f.write('ascii.moveObjectToBottom() carried out\n\n')
-        #f.close()
 
     # if element is off the screen and none of the above.
     if i <= -ascii.visibleAsciiArt[0].numberOfLines:
         ascii.visibleAsciiArt.pop(0)
 
     if len(ascii.visibleAsciiArt) == 0:
-        #process = subprocess.Popen(["killall", "python"])
         sys.exit(0)
 
 
