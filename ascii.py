@@ -85,31 +85,33 @@ class AsciiArt(object):
 
 
 def init():
-	global visibleAsciiArt
-	global premiumAsciiArt
-	global staffAsciiArt
-	global allAsciiArt
+    global visibleAsciiArt
+    global premiumAsciiArt
+    global staffAsciiArt
+    global allAsciiArt
 
-	wizard = AsciiArt("staff-images/wizard", 18, curses.color_pair(2))
-	coffee = AsciiArt("staff-images/coffee", 18, curses.color_pair(5))
-	hand = AsciiArt("staff-images/hand", 15, curses.color_pair(6))
-	boom = AsciiArt("staff-images/boom", 15, curses.color_pair(4))
-	peter = AsciiArt("staff-images/peter-pan", 26, curses.color_pair(2))
-	shoes = AsciiArt("staff-images/shoes", 18, curses.color_pair(8))
-	monkey = AsciiArt("staff-images/monkey", 21, curses.color_pair(6))
-	smileyFace = AsciiArt("staff-images/smiley-face", 15, curses.color_pair(6))
-	brainy = AsciiArt("staff-images/brainy-guy", 17, curses.color_pair(5))
-	book = AsciiArt("staff-images/book", 18, curses.color_pair(3))
-	camera = AsciiArt("staff-images/camera", 14, curses.color_pair(8))
-	bowl = AsciiArt("staff-images/bowl", 18, curses.color_pair(7))
-	hair = AsciiArt("staff-images/hair", 13, curses.color_pair(6))
-	blank = AsciiArt("staff-images/blank", 1, curses.color_pair(6))
+    brainy = AsciiArt("staff-images/brainy-guy", 17, curses.color_pair(5))
+    hand = AsciiArt("staff-images/hand", 15, curses.color_pair(2))
+    book = AsciiArt("staff-images/book", 18, curses.color_pair(3))
+    monkey = AsciiArt("staff-images/monkey", 21, curses.color_pair(4))
+    hair = AsciiArt("staff-images/hair", 18, curses.color_pair(6))
+    pikachu = AsciiArt("staff-images/pikachu", 29, curses.color_pair(6))
+    bowl = AsciiArt("staff-images/bowl", 18, curses.color_pair(7))
+    camera = AsciiArt("staff-images/camera", 18, curses.color_pair(8))
+    wizard = AsciiArt("staff-images/wizard", 18, curses.color_pair(2))
+    shoes = AsciiArt("staff-images/shoes", 18, curses.color_pair(8))
+    coffee = AsciiArt("staff-images/coffee", 18, curses.color_pair(5))
+    boom = AsciiArt("staff-images/boom", 15, curses.color_pair(4))
+    smileyFace = AsciiArt("staff-images/smiley-face", 15, curses.color_pair(6))
+    peter = AsciiArt("staff-images/peter-pan", 26, curses.color_pair(2))
+    aeroplane = AsciiArt("staff-images/aeroplane", 18, curses.color_pair(3))
+    blank = AsciiArt("staff-images/blank", 1, curses.color_pair(6))
 
-	allAsciiArt = [brainy, hand, book, hair, monkey, bowl, camera, wizard, shoes, coffee, boom, smileyFace, peter, blank]
-	staffAsciiArt = [hand, book, hair, monkey, bowl, camera,  wizard, shoes, coffee, boom, smileyFace, peter, blank]
-	visibleAsciiArt = [brainy]
+    allAsciiArt = [brainy, hand, book, monkey, hair, pikachu, bowl, camera, wizard, shoes, coffee, boom, smileyFace, peter, aeroplane, blank]
+    staffAsciiArt = [hand, book, monkey, hair, pikachu, bowl, camera,  wizard, shoes, coffee, boom, smileyFace, peter, aeroplane, blank]
+    visibleAsciiArt = [brainy]
 
-	visibleAsciiArt[0].currentHeight = visibleAsciiArt[0].currentHeight - visibleAsciiArt[0].numberOfLines
+    visibleAsciiArt[0].currentHeight = visibleAsciiArt[0].currentHeight - visibleAsciiArt[0].numberOfLines
 
 
 def makeStaffElementVisible():

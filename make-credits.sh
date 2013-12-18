@@ -11,4 +11,4 @@ kano-window-tool -i $wid -m -dno
 python build.py
 killall python
 python main.py
-xdotool windowkill $wid 
+kill $PPID
