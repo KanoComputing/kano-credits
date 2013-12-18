@@ -24,7 +24,8 @@ def drawTile(x, y, tile='', color=None):
             screen.addstr(y, x + 1, tile, color)
 
     except:
-        print 'error'
+        # suppress output
+        print ''
 
 
 def drawBackground():

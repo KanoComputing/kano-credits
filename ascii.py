@@ -93,7 +93,7 @@ def init():
     brainy = AsciiArt("staff-images/brainy-guy", 17, curses.color_pair(5))
     hand = AsciiArt("staff-images/hand", 15, curses.color_pair(2))
     book = AsciiArt("staff-images/book", 18, curses.color_pair(3))
-    monkey = AsciiArt("staff-images/monkey", 21, curses.color_pair(4))
+    monkey = AsciiArt("staff-images/monkey", 24, curses.color_pair(4))
     hair = AsciiArt("staff-images/hair", 18, curses.color_pair(6))
     pikachu = AsciiArt("staff-images/pikachu", 29, curses.color_pair(6))
     bowl = AsciiArt("staff-images/bowl", 18, curses.color_pair(7))
