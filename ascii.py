@@ -48,7 +48,7 @@ class AsciiArt(object):
 	def drawArt(self):
 		global width
 
-		x = width/10
+		x = width/20
 		y = self.currentHeight
 		tempy = self.currentHeight
 		idx = 0
@@ -90,8 +90,16 @@ def init():
     global staffAsciiArt
     global allAsciiArt
 
-    brainy = AsciiArt("staff-images/brainy-guy", 17, curses.color_pair(5))
+    backers = AsciiArt("headings/backers", 10, curses.color_pair(8))
+    specialThanks = AsciiArt("headings/specialThanks", 18, curses.color_pair(8))
+    translators = AsciiArt("headings/translators", 10, curses.color_pair(8))
+    kano = AsciiArt("headings/kano", 21, curses.color_pair(8))
+
+    brainy = AsciiArt("staff-images/brainy-guy", 21, curses.color_pair(5))
     hand = AsciiArt("staff-images/hand", 15, curses.color_pair(2))
+    hand1 = AsciiArt("staff-images/hand", 15, curses.color_pair(2))
+    hand2 = AsciiArt("staff-images/hand", 15, curses.color_pair(2))
+    hand3 = AsciiArt("staff-images/hand", 15, curses.color_pair(2))
     book = AsciiArt("staff-images/book", 18, curses.color_pair(3))
     monkey = AsciiArt("staff-images/monkey", 24, curses.color_pair(4))
     hair = AsciiArt("staff-images/hair", 18, curses.color_pair(6))
@@ -105,11 +113,26 @@ def init():
     smileyFace = AsciiArt("staff-images/smiley-face", 15, curses.color_pair(6))
     peter = AsciiArt("staff-images/peter-pan", 26, curses.color_pair(2))
     aeroplane = AsciiArt("staff-images/aeroplane", 18, curses.color_pair(3))
+
+    imageBlank1 = AsciiArt("headings/blank", 16, curses.color_pair(8))
+    imageBlank2 = AsciiArt("headings/blank", 16, curses.color_pair(8))
+    imageBlank3 = AsciiArt("headings/blank", 16, curses.color_pair(8))
     blank = AsciiArt("staff-images/blank", 1, curses.color_pair(6))
 
-    allAsciiArt = [brainy, hand, book, monkey, hair, pikachu, bowl, camera, wizard, shoes, coffee, boom, smileyFace, peter, aeroplane, blank]
-    staffAsciiArt = [hand, book, monkey, hair, pikachu, bowl, camera,  wizard, shoes, coffee, boom, smileyFace, peter, aeroplane, blank]
-    visibleAsciiArt = [brainy]
+    """allAsciiArt = [software, hand, brainy, coffee, boom, smileyFace, hair, design, book, peter, monkey, pikachu,
+                    bowl, camera, wizard, shoes, aeroplane, specialThanks, imageBlank1, translators, imageBlank2,
+                    backers, imageBlank3, blank]"""
+    staffAsciiArt = [brainy, hand, hair, coffee, boom, smileyFace, book, peter, monkey, pikachu, 
+                    bowl, camera, wizard, shoes, aeroplane, specialThanks, imageBlank3, translators, imageBlank1,
+                    backers, imageBlank2, blank]
+    visibleAsciiArt = [kano]
+
+    #allAsciiArt = [translators, hand, specialThanks, hand, backers, hand, blank]
+    """visibleAsciiArt = [specialThanks]
+    staffAsciiArt = [imageBlank3, translators, imageBlank1,
+                    backers, imageBlank2, software, hand, brainy, coffee, boom, smileyFace, hair, design, book, peter, monkey, pikachu, 
+                    bowl, camera, wizard, shoes, aeroplane]"""
+    allAsciiArt = visibleAsciiArt + staffAsciiArt
 
     visibleAsciiArt[0].currentHeight = visibleAsciiArt[0].currentHeight - visibleAsciiArt[0].numberOfLines
 

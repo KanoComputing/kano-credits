@@ -61,6 +61,7 @@ def drawBorders():
     color = curses.color_pair(1)
     x_left = 2
     x_right = 100 #int(math.floor(width) / 2)
+    #x_right = 0
     y_top = 2
     y_bottom = 40 #int(math.floor(height) / 2) + 10
 

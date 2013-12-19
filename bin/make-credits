@@ -7,7 +7,7 @@
 #
 
 wid=$(xdotool getactivewindow)
-kano-window-tool -i $wid -m -dno
+kano-window-tool -i $wid -c -w 1024 -h 768 -dno
 cd /usr/share/credits
 python build.py
 python main.py
