@@ -8,7 +8,7 @@
 
 wid=$(xdotool getactivewindow)
 kano-window-tool -i $wid -m -dno
-cd Kanux-utils
+cd /usr/share/credits
 python build.py
 python main.py
 exit(0)
