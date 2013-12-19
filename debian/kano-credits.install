@@ -1,9 +1,10 @@
 ./staff-images/* /usr/share/credits/staff-images
 ./ascii.py /usr/share/credits
 ./build.py /usr/share/credits
-./console.py.py /usr/share/credits
+./console.py /usr/share/credits
 ./controls.py /usr/share/credits
 ./graphics.py /usr/share/credits
 ./loop.py /usr/share/credits
 ./main.py /usr/share/credits
 ./text.py /usr/share/credits
+./bin/make-credits /usr/bin/make-credits
