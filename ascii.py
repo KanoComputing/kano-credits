@@ -1,8 +1,12 @@
 
+# ascii.py
+#
+# Copyright (C) 2013 Kano Computing Ltd.
+# Licence:  http://www.gnu.org/licences/gpl-2.0.txt GNU General Public License v2
+#
+
 import curses
 import console
-import math
-import loop
 import graphics
 
 visibleAsciiArt = []
@@ -13,6 +17,7 @@ height = 0
 width = 0
 printMessageToScreen = ''
 
+
 class AsciiArt(object):
 
     # art will store the asciiArt
@@ -21,67 +26,60 @@ class AsciiArt(object):
     # startingHeight gives us how high on the screen the image is drawn.
     # When this value is < 2 - numberOfLines, it gets removed from the visibleAsciiArt array
     
-	def __init__(self, name, numberOfLines, color):
-		global height
-		global width
+    def __init__(self, name, numberOfLines, color):
+        global height
+        global width
 
-		(width, height) = console.getTerminalSize()
+        (width, height) = console.getTerminalSize()
 
-		self.name = name
-		self.numberOfLines = numberOfLines
-		self.startingHeight = height
-		self.currentHeight = height
-		self.color = color
+        self.name = name
+        self.numberOfLines = numberOfLines
+        self.startingHeight = height
+        self.currentHeight = height
+        self.color = color
 
-		with open(self.name) as f:
-			self.art = f.readlines()
-		for j in range(len(self.art)):
-			self.art[j] = self.art[j].rstrip('\n')
+        with open(self.name) as f:
+            self.art = f.readlines()
+        for j in range(len(self.art)):
+            self.art[j] = self.art[j].rstrip('\n')
 
-	#def shuffleElements(self, i):
-	#	if i == 20 - self.numberOfLines:
-	#		moveObjectToBottom()
-
-    # This function draws the ascii art on the terminal and displays it 
+    # This function draws the ascii art on the terminal and displays it
     #
     #
-	def drawArt(self):
-		global width
+    def drawArt(self):
+        global width
 
-		x = width/20
-		y = self.currentHeight
-		tempy = self.currentHeight
-		idx = 0
-		idx2 = self.numberOfLines
+        x = width / 20
+        y = self.currentHeight
+        tempy = self.currentHeight
+        idx = 0
+        idx2 = self.numberOfLines
 
-		# if element is a set distance above starting point, and staffAsciiArt is not empty
-		if (y == (self.startingHeight - self.numberOfLines)) and staffAsciiArt:
-			makeStaffElementVisible()
-		# if element from premiumAsciiArt is a set distance from where it started and is in the premiumA
-		elif (y == (self.startingHeight - self.numberOfLines)) and self in premiumAsciiArt:
-			switchToPremiumImages()
+        # if element is a set distance above starting point, and staffAsciiArt is not empty
+        if (y == (self.startingHeight - self.numberOfLines)) and staffAsciiArt:
+            makeStaffElementVisible()
+        # if element from premiumAsciiArt is a set distance from where it started and is in the premiumA
+        elif (y == (self.startingHeight - self.numberOfLines)) and self in premiumAsciiArt:
+            switchToPremiumImages()
 
-		# if image would otherwise be drawn outside (above) the terminal
-		if y <= 0:
-			tempy = 0
-			idx = -y
+        # if image would otherwise be drawn outside (above) the terminal
+        if y <= 0:
+            tempy = 0
+            idx = -y
 
         # if image would otherwise be drawn outside (below) the terminal
-		if y >= height - self.numberOfLines - 1:
-			idx2 = height - y
+        if y >= height - self.numberOfLines - 1:
+            idx2 = height - y
 
-		for idx in range(idx, idx2):
-			if y == -self.numberOfLines:
-				# so the element is back at the bottom of the page at the end of this function
-				self.currentHeight = self.startingHeight
-				return
-			graphics.drawTile(x, tempy, self.art[idx], self.color)
-			tempy = tempy + 1
+        for idx in range(idx, idx2):
+            if y == -self.numberOfLines:
+                # so the element is back at the bottom of the page at the end of this function
+                self.currentHeight = self.startingHeight
+                return
+            graphics.drawTile(x, tempy, self.art[idx], self.color)
+            tempy = tempy + 1
 
-		self.currentHeight = self.currentHeight - 1
-
-
-#####################################################################################
+        self.currentHeight = self.currentHeight - 1
 
 
 def init():
@@ -97,9 +95,6 @@ def init():
 
     brainy = AsciiArt("staff-images/brainy-guy", 21, curses.color_pair(5))
     hand = AsciiArt("staff-images/hand", 15, curses.color_pair(2))
-    hand1 = AsciiArt("staff-images/hand", 15, curses.color_pair(2))
-    hand2 = AsciiArt("staff-images/hand", 15, curses.color_pair(2))
-    hand3 = AsciiArt("staff-images/hand", 15, curses.color_pair(2))
     book = AsciiArt("staff-images/book", 18, curses.color_pair(3))
     monkey = AsciiArt("staff-images/monkey", 24, curses.color_pair(4))
     hair = AsciiArt("staff-images/hair", 18, curses.color_pair(6))
@@ -122,48 +117,43 @@ def init():
     """allAsciiArt = [software, hand, brainy, coffee, boom, smileyFace, hair, design, book, peter, monkey, pikachu,
                     bowl, camera, wizard, shoes, aeroplane, specialThanks, imageBlank1, translators, imageBlank2,
                     backers, imageBlank3, blank]"""
-    staffAsciiArt = [brainy, hand, hair, coffee, boom, smileyFace, book, peter, monkey, pikachu, 
+    staffAsciiArt = [ brainy, hand, hair, coffee, boom, smileyFace, book, peter, monkey, pikachu,
                     bowl, camera, wizard, shoes, aeroplane, specialThanks, imageBlank3, translators, imageBlank1,
-                    backers, imageBlank2, blank]
+                    backers, imageBlank2, blank ]
     visibleAsciiArt = [kano]
-
-    #allAsciiArt = [translators, hand, specialThanks, hand, backers, hand, blank]
-    """visibleAsciiArt = [specialThanks]
-    staffAsciiArt = [imageBlank3, translators, imageBlank1,
-                    backers, imageBlank2, software, hand, brainy, coffee, boom, smileyFace, hair, design, book, peter, monkey, pikachu, 
-                    bowl, camera, wizard, shoes, aeroplane]"""
     allAsciiArt = visibleAsciiArt + staffAsciiArt
 
     visibleAsciiArt[0].currentHeight = visibleAsciiArt[0].currentHeight - visibleAsciiArt[0].numberOfLines
 
 
 def makeStaffElementVisible():
-	global visibleAsciiArt
-	global staffAsciiArt
+    global visibleAsciiArt
+    global staffAsciiArt
 
-	visibleAsciiArt.append(staffAsciiArt[0])
-	staffAsciiArt.pop(0)
+    visibleAsciiArt.append(staffAsciiArt[0])
+    staffAsciiArt.pop(0)
 
 
-def switchToPremiumImages():  # TODO: need to turn this off if filled with icons already 
-	global visibleAsciiArt
-	global premiumAsciiArt
-	global printMessageToScreen
+def switchToPremiumImages():  # TODO: need to turn this off if filled with icons already
+    global visibleAsciiArt
+    global premiumAsciiArt
+    global printMessageToScreen
 
-	if len(premiumAsciiArt) != 0:
-		premiumAsciiArt[0].currentHeight = premiumAsciiArt[0].startingHeight
-		visibleAsciiArt.append(premiumAsciiArt[0])
-		premiumAsciiArt.append(premiumAsciiArt[0])
-		premiumAsciiArt.pop(0)
+    if len(premiumAsciiArt) != 0:
+        premiumAsciiArt[0].currentHeight = premiumAsciiArt[0].startingHeight
+        visibleAsciiArt.append(premiumAsciiArt[0])
+        premiumAsciiArt.append(premiumAsciiArt[0])
+        premiumAsciiArt.pop(0)
+
 
 # Sticks the object at the top of the array onto the bottom
 def moveObjectToBottom():
-	global visibleAsciiArt
-	visibleAsciiArt[0].currentHeight = visibleAsciiArt[0].startingHeight
-	visibleAsciiArt.append(visibleAsciiArt[0])
-	visibleAsciiArt.remove(visibleAsciiArt[0])
+    global visibleAsciiArt
+    visibleAsciiArt[0].currentHeight = visibleAsciiArt[0].startingHeight
+    visibleAsciiArt.append(visibleAsciiArt[0])
+    visibleAsciiArt.remove(visibleAsciiArt[0])
 
 
 def removeTopElement():
-	global visibleAsciiArt
-	visibleAsciiArt.pop(0)
+    global visibleAsciiArt
+    visibleAsciiArt.pop(0)

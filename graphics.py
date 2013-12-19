@@ -1,8 +1,13 @@
 
+# graphics.py
+#
+# Copyright (C) 2013 Kano Computing Ltd.
+# Licence:  http://www.gnu.org/licences/gpl-2.0.txt GNU General Public License v2
+#
+
 import curses
 import console
 import math
-import loop
 import ascii
 import text
 import sys
@@ -18,7 +23,7 @@ def drawTile(x, y, tile='', color=None):
 
     #x = x * 2 + stage.padding[3] * 2 + stage.width / 2
     #y += stage.padding[0] + stage.height / 2
-    try :
+    try:
         screen.addstr(y, x, tile, color)
         if (len(tile) < 2):
             screen.addstr(y, x + 1, tile, color)
@@ -35,7 +40,6 @@ def drawBackground():
     print height
     # max_y = int(math.floor(height) / 2)
     max_x = int(math.floor(width) / 2)
-    color = curses.color_pair(2)
 
     # Top to bottom
     for y in range(0, height):
@@ -60,10 +64,10 @@ def drawBorders():
 
     color = curses.color_pair(1)
     x_left = 2
-    x_right = 100 #int(math.floor(width) / 2)
+    x_right = 100  # int(math.floor(width) / 2)
     #x_right = 0
     y_top = 2
-    y_bottom = 40 #int(math.floor(height) / 2) + 10
+    y_bottom = 40  # int(math.floor(height) / 2) + 10
 
     for y in range(y_top, y_bottom):
         drawTile(x_left - 1, y, '  ', color)
