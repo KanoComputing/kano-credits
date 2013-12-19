@@ -17,14 +17,14 @@ class Build(object):
         self.textFilenames = textFilenames
         self.text = []
         self.createdText = []
-        open('actualText', 'w').close()
+        open('/tmp/actualText', 'w').close()
         self.build()
 
     def build(self):
         
         (width, height) = console.getTerminalSize()
 
-        h = open('actualText', 'a')
+        h = open('/tmp/actualText', 'a')
         # This decides how high up the text should start
         for k in range(height - 8):  # -18 initially
             h.write(' '.ljust(30) + '\n')
@@ -40,7 +40,7 @@ class Build(object):
                 for j in range(numberOfLines - 2):
                     h.write(' '.ljust(30) + '\n')
                 text = re.sub(';', '\n', self.text[i])
-                h = open('actualText', 'a')
+                h = open('/tmp/actualText', 'a')
                 h.write(text)
 
             # should fail at the end of the file, so just close the file.

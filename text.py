@@ -63,7 +63,7 @@ def init():
     # To add more text to the credits, create an object
     # from the name of the file and list it in the allText array.
 
-    staff = Text("actualText")
+    staff = Text("/tmp/actualText")
     currentText = [staff]
 
 
