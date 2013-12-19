@@ -95,7 +95,7 @@ def init():
     book = AsciiArt("staff-images/book", 18, curses.color_pair(3))
     monkey = AsciiArt("staff-images/monkey", 24, curses.color_pair(4))
     hair = AsciiArt("staff-images/hair", 18, curses.color_pair(6))
-    pikachu = AsciiArt("staff-images/pikachu", 29, curses.color_pair(6))
+    pikachu = AsciiArt("staff-images/pikachu", 22, curses.color_pair(6))
     bowl = AsciiArt("staff-images/bowl", 18, curses.color_pair(7))
     camera = AsciiArt("staff-images/camera", 18, curses.color_pair(8))
     wizard = AsciiArt("staff-images/wizard", 18, curses.color_pair(2))
