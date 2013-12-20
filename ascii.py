@@ -88,9 +88,9 @@ def init():
     global staffAsciiArt
     global allAsciiArt
 
-    backers = AsciiArt("headings/backers", 10, curses.color_pair(8))
-    specialThanks = AsciiArt("headings/specialThanks", 18, curses.color_pair(8))
-    translators = AsciiArt("headings/translators", 10, curses.color_pair(8))
+    backers = AsciiArt("headings/backers", 9, curses.color_pair(8))
+    specialThanks = AsciiArt("headings/specialThanks", 12, curses.color_pair(8))
+    translators = AsciiArt("headings/translators", 9, curses.color_pair(8))
     kano = AsciiArt("headings/kano", 21, curses.color_pair(8))
 
     brainy = AsciiArt("staff-images/brainy-guy", 21, curses.color_pair(5))
