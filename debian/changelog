@@ -1,5 +1,15 @@
-kano-credits (1.0-1) UNRELEASED; urgency=low
+kano-credits (1.0-2) unstable; urgency=low
 
+  * Package rebuilt, updated to revision 7ef0b93b.
+
+ -- Team Kano <hello@kano.me>  Thu, 19 Dec 2013 22:56:48 +0000
+
+kano-credits (1.0-1.1) unstable; urgency=low
+
+  [ Alex ]
   * Initial release. (Closes: #XXXXXX)
 
- -- Alex <alex@Kano>  Thu, 19 Dec 2013 11:13:46 +0000
+  [ Team Kano ]
+  * Package rebuilt, updated to revision 0a4ff19b.
+
+ -- Team Kano <hello@kano.me>  Thu, 19 Dec 2013 22:05:49 +0000
