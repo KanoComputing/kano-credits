@@ -1,3 +1,9 @@
+kano-credits (1.0-12) unstable; urgency=low
+
+  * Package rebuilt, updated to revision 50e4b1dc.
+
+ -- Team Kano <dev@kano.me>  Mon, 23 Dec 2013 02:27:29 +0000
+
 kano-credits (1.0-11) unstable; urgency=low
 
   * Package rebuilt, updated to revision da65b6d6.
