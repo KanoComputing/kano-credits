@@ -1,13 +1,15 @@
-#!/bin/bash
+
+#!/bin/sh
 
 # kano-credits
 #
-# Copyright (C) 2013 Kano Computing Ltd.
-# Licence:  http://www.gnu.org/licences/gpl-2.0.txt GNU General Public License v2
+# Copyright (C) 2014 Kano Computing Ltd.
+# Licence: http://www.gnu.org/licences/gpl-2.0.txt GNU General Public License v2
 #
 
 kano-window-tool -t 'Credits' -c -f -w 1024 -h 768 -dyes
 cd /usr/share/kano-credits
 python build.py
 python main.py
+
 exit 0
