@@ -7,5 +7,5 @@ Build-Depends: debhelper (>= 9)
 
 Package: kano-credits
 Architecture: armhf
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, rxvt-unicode-256color
 Description: Kanux credits
