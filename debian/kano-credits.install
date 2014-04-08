@@ -11,5 +11,5 @@
 ./staff /usr/share/kano-credits
 ./text.py /usr/share/kano-credits
 
-./icon/Kano-Credits /usr/share/kano-desktop/extras
-./icon/credits.png /usr/share/kano-desktop/icons
+./icon/Kano-Credits /usr/share/kano-extras/extras
+./icon/credits.png /usr/share/kano-extras/icons
