@@ -1,15 +1,5 @@
 ./bin/kano-credits /usr/bin
-./headings/* /usr/share/kano-credits/headings
-./staff-images/* /usr/share/kano-credits/staff-images
-./ascii.py /usr/share/kano-credits
-./build.py /usr/share/kano-credits
-./console.py /usr/share/kano-credits
-./controls.py /usr/share/kano-credits
-./graphics.py /usr/share/kano-credits
-./loop.py /usr/share/kano-credits
-./main.py /usr/share/kano-credits
-./staff /usr/share/kano-credits
-./text.py /usr/share/kano-credits
+./credits/* /usr/share/kano-credits
 
 ./icon/Kano-Credits /usr/share/kano-apps/extras
 ./icon/credits.png /usr/share/kano-apps/icons
