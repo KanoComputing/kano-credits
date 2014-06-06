@@ -8,3 +8,4 @@ Exec=/usr/bin/kano-launcher "rxvt -title 'Credits' -e /usr/bin/kano-credits"
 Comment[en_GB]=See who created the software
 Categories=Extras;
 StartupNotify=true
+Help=Kano wouldn’t have been possible without the thousand of people who supported us on Kickstarter. We love you all - and that’s why every backer’s name is engraved in Kano OS. Why not take a look?
