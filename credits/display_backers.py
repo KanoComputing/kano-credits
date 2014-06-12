@@ -49,16 +49,18 @@ def turn_into_list():
         prev_line = ""
         if i > 0:
             prev_line = text[i - 1]
-        if len(line_so_far + current_line) > width:
-            whitespace = width - len(line_so_far)
-            prev_line = prev_line.replace('\n', ','.ljust(whitespace) + '\n')
-            line_so_far = current_line.replace('\n', ', ')
 
+        if len(line_so_far + current_line) > width:
+            prev_line = prev_line.replace('\n', ',\n')
+            line_so_far = current_line.replace('\n', ', ')
         else:
             prev_line = prev_line.replace('\n', ', ')
             line_so_far += current_line.replace('\n', ', ')
 
-        number = random.randint(16, 254)
+        # colours too dark to be seen clearly on terminal.
+        # Get colour values using tco -d
+        dark_colours = [0, 8, 16, 17, 18, 232, 233, 234, 235, 236]
+        number = random_number(dark_colours)
         # Colour background black
         colouredline = colourize256(prev_line, number, 0, True)
         output += colouredline
@@ -67,4 +69,10 @@ def turn_into_list():
 
     w.close()
 
-show_backer_names()
+
+def random_number(array):
+    while True:
+        number = random.randint(1, 255)
+        # These colours are too dark to be seen
+        if not number in array:
+            return number
