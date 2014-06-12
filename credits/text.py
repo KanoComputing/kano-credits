@@ -76,3 +76,8 @@ def changeVisibleText():
         currentText.pop(0)
         allText.append(allText[0])
         allText.pop(0)
+
+
+def popTopOff():
+    if len(currentText[0].text) > 0:
+        currentText[0].text.pop(0)

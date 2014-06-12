@@ -24,21 +24,12 @@ def init():
     graphics.drawBackground()
     text.init()
 
-    
+
 def update():
     global move_y
 
-    if len(text.currentText[0].text) > 0:
-        text.currentText[0].text.pop(0)
-
-    # Go through array of visible ascii art
-    # For each object, move the top line of the art to the bottom
-
-    for i in range(len(ascii.visibleAsciiArt)):
-        for x in range(ascii.visibleAsciiArt[i].numberOfLines):
-            ascii.visibleAsciiArt[i].art.append(ascii.visibleAsciiArt[i].art[0])
-            ascii.visibleAsciiArt[i].art.pop(0)
-        
+    text.popTopOff()
+    ascii.update()
     graphics.update()
 
 
