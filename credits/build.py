@@ -43,7 +43,9 @@ class Build(object):
                 for j in range(numberOfLines - 2):
                     h.write(' '.ljust(30) + '\n')
                 # Swap ; with whitepace and a new line character
-                text = re.sub(';', ' '.ljust(10) + '\n', self.text[i])
+                text = re.sub('\n', ' '.ljust(8) + '\n', self.text[i])
+                text = re.sub(';', '\n', text)
+
                 h = open(TMP_FILE, 'a')
                 h.write(text)
 
