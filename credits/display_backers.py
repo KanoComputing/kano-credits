@@ -70,6 +70,7 @@ def turn_into_list():
     w.close()
 
 
+# Exclude any numbers in the array
 def random_number(array):
     while True:
         number = random.randint(1, 255)
