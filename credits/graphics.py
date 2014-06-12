@@ -5,12 +5,13 @@
 # Licence:  http://www.gnu.org/licences/gpl-2.0.txt GNU General Public License v2
 #
 
+import sys
 import curses
 import console
 import math
 import ascii
 import text
-import sys
+import display_backers
 
 screen = None
 #padding = (padding_y, padding_x, padding_y, padding_x)
@@ -46,7 +47,7 @@ def drawBackground():
         # Left to Right
         for x in range(0, max_x):
             drawTile(x, y, ' ', curses.COLOR_BLUE)
-    
+
     #drawHeader()
     #drawBorders()
 
@@ -58,7 +59,7 @@ def drawHeader():
 
     drawTile(10, 0, "Width: %d, Height: %d" % (width, height), color)
     #drawTile(10, 0, 'c r e d i t s', curses.COLOR_GREEN)
- 
+
 
 def drawBorders():
 
@@ -81,7 +82,7 @@ def drawBorders():
     drawTile(x_left - 1, y_bottom, '  ', color)
     drawTile(x_right, y_top - 1, '  ', color)
     drawTile(x_right, y_bottom, '  ', color)
-        
+
 
 def update():
 
@@ -98,12 +99,13 @@ def update():
 def popOffTop():
     if len(ascii.visibleAsciiArt) != 0:
         i = ascii.visibleAsciiArt[0].currentHeight
-
-    # if element is off the screen and none of the above.
-    if i <= -ascii.visibleAsciiArt[0].numberOfLines:
-        ascii.visibleAsciiArt.pop(0)
+        # if element is off the screen and none of the above.
+        if i <= -ascii.visibleAsciiArt[0].numberOfLines:
+            ascii.visibleAsciiArt.pop(0)
 
     if len(ascii.visibleAsciiArt) == 0:
+        # Show backers names
+        display_backers.show_backer_names()
         sys.exit(0)
 
 

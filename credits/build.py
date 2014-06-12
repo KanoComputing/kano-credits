@@ -10,6 +10,9 @@ import graphics
 import re
 import console
 
+TMP_FILE = '/tmp/actualText'
+STAFF_NAMES = 'text/staff'
+
 
 class Build(object):
 
@@ -17,14 +20,14 @@ class Build(object):
         self.textFilenames = textFilenames
         self.text = []
         self.createdText = []
-        open('/tmp/actualText', 'w').close()
+        open(TMP_FILE, 'w').close()
         self.build()
 
     def build(self):
-        
+
         (width, height) = console.getTerminalSize()
 
-        h = open('/tmp/actualText', 'a')
+        h = open(TMP_FILE, 'a')
         # This decides how high up the text should start
         for k in range(height - 8):  # -18 initially
             h.write(' '.ljust(30) + '\n')
@@ -39,8 +42,9 @@ class Build(object):
                 numberOfLines = ascii.allAsciiArt[i].numberOfLines
                 for j in range(numberOfLines - 2):
                     h.write(' '.ljust(30) + '\n')
-                text = re.sub(';', '\n', self.text[i])
-                h = open('/tmp/actualText', 'a')
+                # Swap ; with whitepace and a new line character
+                text = re.sub(';', ' '.ljust(10) + '\n', self.text[i])
+                h = open(TMP_FILE, 'a')
                 h.write(text)
 
             # should fail at the end of the file, so just close the file.
@@ -52,4 +56,4 @@ class Build(object):
 # ----------------------------------------------------------------------------
 
 graphics.init()
-Build('staff')
+Build(STAFF_NAMES)

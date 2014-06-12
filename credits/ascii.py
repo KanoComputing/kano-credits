@@ -25,7 +25,7 @@ class AsciiArt(object):
     # numberOfLines will store how long each piece of ascii art is
     # startingHeight gives us how high on the screen the image is drawn.
     # When this value is < 2 - numberOfLines, it gets removed from the visibleAsciiArt array
-    
+
     def __init__(self, name, numberOfLines, color):
         global height
         global width
@@ -90,7 +90,7 @@ def init():
 
     backers = AsciiArt("headings/backers", 9, curses.color_pair(8))
     specialThanks = AsciiArt("headings/specialThanks", 12, curses.color_pair(8))
-    translators = AsciiArt("headings/translators", 9, curses.color_pair(8))
+    #translators = AsciiArt("headings/translators", 9, curses.color_pair(8))
     kano = AsciiArt("headings/kano", 21, curses.color_pair(8))
 
     brainy = AsciiArt("staff-images/brainy-guy", 21, curses.color_pair(5))
@@ -109,17 +109,14 @@ def init():
     peter = AsciiArt("staff-images/peter-pan", 26, curses.color_pair(2))
     aeroplane = AsciiArt("staff-images/aeroplane", 18, curses.color_pair(3))
 
-    imageBlank1 = AsciiArt("headings/blank", 16, curses.color_pair(8))
-    imageBlank2 = AsciiArt("headings/blank", 16, curses.color_pair(8))
+    #imageBlank1 = AsciiArt("headings/blank", 16, curses.color_pair(8))
+    #imageBlank2 = AsciiArt("headings/blank", 16, curses.color_pair(8))
     imageBlank3 = AsciiArt("headings/blank", 16, curses.color_pair(8))
-    blank = AsciiArt("staff-images/blank", 1, curses.color_pair(6))
+    #blank = AsciiArt("staff-images/blank", 1, curses.color_pair(6))
 
-    """allAsciiArt = [software, hand, brainy, coffee, boom, smileyFace, hair, design, book, peter, monkey, pikachu,
-                    bowl, camera, wizard, shoes, aeroplane, specialThanks, imageBlank1, translators, imageBlank2,
-                    backers, imageBlank3, blank]"""
-    staffAsciiArt = [ brainy, hand, hair, coffee, boom, smileyFace, book, peter, monkey, pikachu,
-                    bowl, camera, wizard, shoes, aeroplane, specialThanks, imageBlank3, translators, imageBlank1,
-                    backers, imageBlank2, blank ]
+    staffAsciiArt = [brainy, hand, hair, coffee, boom, smileyFace, book, peter, monkey, pikachu,
+                     bowl, camera, wizard, shoes, aeroplane, specialThanks, imageBlank3,
+                     backers]
     visibleAsciiArt = [kano]
     allAsciiArt = visibleAsciiArt + staffAsciiArt
 
@@ -157,3 +154,13 @@ def moveObjectToBottom():
 def removeTopElement():
     global visibleAsciiArt
     visibleAsciiArt.pop(0)
+
+
+def update():
+    # Go through array of visible ascii art
+    # For each object, move the top line of the art to the bottom
+
+    for i in range(len(visibleAsciiArt)):
+        for x in range(visibleAsciiArt[i].numberOfLines):
+            visibleAsciiArt[i].art.append(visibleAsciiArt[i].art[0])
+            visibleAsciiArt[i].art.pop(0)
