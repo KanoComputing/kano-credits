@@ -108,6 +108,7 @@ def init():
     smileyFace = AsciiArt("staff-images/smiley-face", 15, curses.color_pair(6))
     peter = AsciiArt("staff-images/peter-pan", 26, curses.color_pair(2))
     aeroplane = AsciiArt("staff-images/aeroplane", 18, curses.color_pair(3))
+    judoka = AsciiArt("staff-images/judoka", 25, curses.color_pair(7))
 
     #imageBlank1 = AsciiArt("headings/blank", 16, curses.color_pair(8))
     #imageBlank2 = AsciiArt("headings/blank", 16, curses.color_pair(8))
@@ -115,7 +116,7 @@ def init():
     #blank = AsciiArt("staff-images/blank", 1, curses.color_pair(6))
 
     staffAsciiArt = [brainy, hand, hair, coffee, boom, smileyFace, book, peter, monkey, pikachu,
-                     bowl, camera, wizard, shoes, aeroplane, specialThanks, imageBlank3,
+                     bowl, camera, wizard, shoes, aeroplane, judoka, specialThanks, imageBlank3,
                      backers]
     visibleAsciiArt = [kano]
     allAsciiArt = visibleAsciiArt + staffAsciiArt
