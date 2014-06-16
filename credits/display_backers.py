@@ -30,7 +30,7 @@ def show_backer_names():
     f = open(LIST_FILENAME)
     output = f.read()
     if len(output) > 0:
-        pydoc.pipepager(output, cmd='less -R')
+        pydoc.pipepager(output, cmd='less -RM +Gg')
 
 
 def turn_into_list():
