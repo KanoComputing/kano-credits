@@ -1,5 +1,5 @@
 bin/kano-credits usr/bin
 credits/* usr/share/kano-credits
 
-icon/kano-credits.desktop usr/share/kano-apps/extras
-icon/credits.png usr/share/kano-apps/icons
+icon/kano-credits.app usr/share/kano-applications/
+icon/credits.png usr/share/icons/Kano/66x66/apps/
