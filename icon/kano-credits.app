@@ -10,5 +10,5 @@
 
   "packages": [],
   "dependencies": ["kano-credits"],
-  "exec": "/usr/bin/kano-launcher \"kdesk-blur 'urxvt -bg rgba:0000/0000/0000/FFFF -title 'Credits' -e /usr/bin/kano-credits'\""
+  "launch_command": "/usr/bin/kano-launcher \"kdesk-blur 'urxvt -bg rgba:0000/0000/0000/FFFF -title 'Credits' -e /usr/bin/kano-credits'\""
 }
