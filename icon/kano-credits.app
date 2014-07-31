@@ -1,7 +1,8 @@
 {
-  "name": "Credits",
-  "description": "See who created the software",
-  "help": "Kano wouldn’t have been possible without the thousand of people who supported us on Kickstarter. We love you all - and that’s why every backer's name is engraved in Kano OS. Why not take a look?",
+  "title": "Credits",
+  "tagline": "See who created the software",
+  "description": "Kano wouldn’t have been possible without the thousand of people who supported us on Kickstarter. We love you all - and that’s why every backer's name is engraved in Kano OS. Why not take a look?",
+  "slug": "credits",
 
   "icon": "credits",
   "colour": "#caa96d",
